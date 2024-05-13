@@ -27,7 +27,8 @@ type AppScreenProps = {
     isMain: boolean;
     wasLogin: boolean;
     email?: string;
-    favorite?: number;
+
+    favorite_cards: PlaceCards;
 }
 
 type AppScreenPropsSet = {
@@ -82,9 +83,9 @@ function App(appScreenProps: AppScreenProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={AppRoute.Root} element={<Layout isMain={isMain} wasLogin={wasLogin} email={appScreenProps.email} favorite={appScreenProps.favorite} isNeedingFooter={appScreenProps.isNeedingFooter}/>}>
+        <Route path={AppRoute.Root} element={<Layout isMain={isMain} wasLogin={wasLogin} email={appScreenProps.email} favorite={appScreenProps.place_cards[appScreenProps.active_city].length} isNeedingFooter={appScreenProps.isNeedingFooter}/>}>
           <Route index element={GetMain(appScreenProps)} />
-          <Route path={AppRoute.Favorites} element={<PrivateRoute authorizationStatus={AuthorizationStatus.Auth}><Favorite /></PrivateRoute>} />
+          <Route path={AppRoute.Favorites} element={<PrivateRoute authorizationStatus={AuthorizationStatus.Auth}><Favorite favorite_cards={appScreenProps.favorite_cards}/></PrivateRoute>} />
           <Route path={AppRoute.Offer} element={<Offers wasLogin={appScreenProps.wasLogin} city={appScreenProps.active_city} index={0}/>} />
           <Route path={AppRoute.Login} element={<GetLogin appScreenProps={appScreenProps} setIsMain={setIsMain} setWasLogin={setWasLogin}/>} />
           <Route path='*' element={<NotFound/>}/>

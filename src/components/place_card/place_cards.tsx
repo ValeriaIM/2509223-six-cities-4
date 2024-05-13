@@ -3,7 +3,7 @@ import PlaceCard from "./place_card";
 
 export type PlaceCards = Record<CityName, JSX.Element[]>
 
-export const Place_Cards = {
+export const Place_Cards: PlaceCards = {
     [CityName.Amsterdam]: [
         <PlaceCard
         key="amsterdam-1"

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
 import { CityName } from './const';
 import { offers } from './pages/offer/offers';
-import { Place_Cards } from './components/place_card/place_cards';
+import { PlaceCards, Place_Cards } from './components/place_card/place_cards';
 
 const cities:string[] = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
 
@@ -18,7 +18,14 @@ export const Setting = {
   isMain: true,
   wasLogin: true, //'-1' - не зашел, '0' - заходит, '1' - зашел
   email: 'Oliver.conner@gmail.com',
-  favorite: 3,
+  favotite_cards: {
+    [CityName.Amsterdam]: [Place_Cards[CityName.Amsterdam][0], Place_Cards[CityName.Amsterdam][1]],
+    [CityName.Cologne]: [Place_Cards[CityName.Cologne][0]],
+    [CityName.Brussels]: [],
+    [CityName.Hamburg]: [],
+    [CityName.Dusseldorf]: [],
+    [CityName.Paris]: [],
+  },
 };
 
 const root = ReactDOM.createRoot(
@@ -38,7 +45,7 @@ root.render(
       isMain={Setting.isMain}
       wasLogin={Setting.wasLogin}
       email={Setting.email}
-      favorite={Setting.favorite}
+      favorite_cards={Setting.favotite_cards}
       isNeedingFooter={Setting.isNeedingFooter}
     />
   </React.StrictMode>
