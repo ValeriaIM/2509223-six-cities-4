@@ -13,6 +13,7 @@ import PrivateRoute from '../private_route';
 
 type AppScreenProps = {
     count_places: number;
+    offers: object;
 
     cities: string[];
     activeCityId: number;

@@ -13,7 +13,6 @@ type OfferProps = {
     inside: string[];
     host: JSX.Element[];
     reviews: JSX.Element[][];
-    wasLogin: boolean;
 }
 
 type Features = {
@@ -134,7 +133,7 @@ function Offer(offerProps:OfferProps): JSX.Element {
                 <ul className="reviews__list">
                   {offerProps.reviews.map((review) => <li className="reviews__item">{review}</li>)}
                 </ul>
-                {offerProps.wasLogin && <ReviewNew />}
+                <ReviewNew />
               </section>
             </div>
           </div>

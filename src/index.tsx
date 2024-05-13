@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
 import { CityName } from './const';
+import { offers } from './pages/offer/offers';
 
 const cities:string[] = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
 
@@ -27,6 +28,7 @@ root.render(
   <React.StrictMode>
     <App
       count_places={Setting.countPlaces}
+      offers={offers}
       cities={cities}
       activeCityId={Setting.activeCityId}
       currentPage={Setting.currentPage}
