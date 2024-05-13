@@ -7,7 +7,7 @@ function CitiesTabs({cities, activeCityId}: CitiesTabsProps): JSX.Element {
   const locations = [];
   for (let i = 0; i < cities.length; i++) {
     locations.push(
-      <li className="locations__item">
+      <li key={i} className="locations__item">
         {i !== activeCityId && (
           <a className="locations__item-link tabs__item" href="#"><span>{cities[i]}</span></a>
         )}

@@ -1,14 +1,14 @@
 import MainEmpty from '../../pages/main/main_empty';
 import Main from '../../pages/main/main';
 import Favorite from '../../pages/favorites/favorites';
-import Offer from '../../pages/offer/offer';
+import Offers from '../../pages/offer/offers';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Layout from './layout';
 import Login from '../../pages/login';
 import React from 'react';
 import NotFound from '../../pages/404';
-import { AppRoute, AuthorizationStatus } from '../../const';
+import { AppRoute, AuthorizationStatus, CityName } from '../../const';
 import PrivateRoute from '../private_route';
 
 type AppScreenProps = {
@@ -18,6 +18,7 @@ type AppScreenProps = {
     activeCityId: number;
 
     currentPage: string;
+    currentCity: CityName;
     isNeedingFooter: boolean;
 
     isMain: boolean;
@@ -77,8 +78,8 @@ function App(appScreenProps: AppScreenProps): JSX.Element {
       <Routes>
         <Route path={AppRoute.Root} element={<Layout isMain={isMain} wasLogin={wasLogin} email={appScreenProps.email} favorite={appScreenProps.favorite} isNeedingFooter={appScreenProps.isNeedingFooter}/>}>
           <Route index element={GetMain(appScreenProps)} />
-          <Route path={AppRoute.Favorites} element={<PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}><Favorite /></PrivateRoute>} />
-          <Route path={AppRoute.Offer} element={<Offer wasLogin={appScreenProps.wasLogin}/>} />
+          <Route path={AppRoute.Favorites} element={<PrivateRoute authorizationStatus={AuthorizationStatus.Auth}><Favorite /></PrivateRoute>} />
+          <Route path={AppRoute.Offer} element={<Offers wasLogin={appScreenProps.wasLogin} city={appScreenProps.currentCity} index={0}/>} />
           <Route path={AppRoute.Login} element={<GetLogin appScreenProps={appScreenProps} setIsMain={setIsMain} setWasLogin={setWasLogin}/>} />
           <Route path='*' element={<NotFound/>}/>
         </Route>

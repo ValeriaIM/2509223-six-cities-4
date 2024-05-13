@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
+import { CityName } from './const';
 
 const cities:string[] = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
 
@@ -9,6 +10,7 @@ export const Setting = {
   activeCityId: 3,
 
   currentPage: 'main',
+  currentCity: CityName.Amsterdam,
   isNeedingFooter: false,
 
   isMain: true,
@@ -28,6 +30,7 @@ root.render(
       cities={cities}
       activeCityId={Setting.activeCityId}
       currentPage={Setting.currentPage}
+      currentCity={Setting.currentCity}
       isMain={Setting.isMain}
       wasLogin={Setting.wasLogin}
       email={Setting.email}
