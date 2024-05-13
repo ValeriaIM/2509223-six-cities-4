@@ -6,20 +6,22 @@ import Offers from '../../pages/offer/offers';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Layout from './layout';
 import Login from '../../pages/login';
-import React from 'react';
+import React, { Fragment } from 'react';
 import NotFound from '../../pages/404';
 import { AppRoute, AuthorizationStatus, CityName } from '../../const';
 import PrivateRoute from '../private_route';
+import { PlaceCards } from '../place_card/place_cards';
 
 type AppScreenProps = {
     count_places: number;
     offers: object;
+    place_cards: PlaceCards;
 
     cities: string[];
     activeCityId: number;
 
     currentPage: string;
-    currentCity: CityName;
+    active_city: CityName;
     isNeedingFooter: boolean;
 
     isMain: boolean;
@@ -35,18 +37,21 @@ type AppScreenPropsSet = {
 }
 
 function GetMain(appScreenProps: AppScreenProps): JSX.Element {
-  if (appScreenProps.count_places > 0) {
+  var count_places = appScreenProps.place_cards[appScreenProps.active_city].length;
+  if (count_places > 0) {
     return (
       <Main
-        count_places={appScreenProps.count_places}
+        count_places={count_places}
+        place_cards={appScreenProps.place_cards}
         cities={appScreenProps.cities}
         active_city_id={appScreenProps.activeCityId}
+        active_city={appScreenProps.active_city}
       />);
   }
 
   return (
     <MainEmpty
-      count_places={appScreenProps.count_places}
+      count_places={count_places}
       cities={appScreenProps.cities}
       active_city_id={appScreenProps.activeCityId}
     />);
@@ -80,7 +85,7 @@ function App(appScreenProps: AppScreenProps): JSX.Element {
         <Route path={AppRoute.Root} element={<Layout isMain={isMain} wasLogin={wasLogin} email={appScreenProps.email} favorite={appScreenProps.favorite} isNeedingFooter={appScreenProps.isNeedingFooter}/>}>
           <Route index element={GetMain(appScreenProps)} />
           <Route path={AppRoute.Favorites} element={<PrivateRoute authorizationStatus={AuthorizationStatus.Auth}><Favorite /></PrivateRoute>} />
-          <Route path={AppRoute.Offer} element={<Offers wasLogin={appScreenProps.wasLogin} city={appScreenProps.currentCity} index={0}/>} />
+          <Route path={AppRoute.Offer} element={<Offers wasLogin={appScreenProps.wasLogin} city={appScreenProps.active_city} index={0}/>} />
           <Route path={AppRoute.Login} element={<GetLogin appScreenProps={appScreenProps} setIsMain={setIsMain} setWasLogin={setWasLogin}/>} />
           <Route path='*' element={<NotFound/>}/>
         </Route>

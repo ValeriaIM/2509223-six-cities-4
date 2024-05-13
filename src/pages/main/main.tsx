@@ -1,11 +1,15 @@
 import CitiesTabs from '../../components/cities_tabs';
-import PlaceCard from '../../components/place_card';
+import PlaceCard from '../../components/place_card/place_card';
+import { PlaceCards } from '../../components/place_card/place_cards';
+import { CityName } from '../../const';
 
 type MainProps = {
     count_places: number;
+    place_cards: PlaceCards;
 
     cities: string[];
     active_city_id: number;
+    active_city: CityName;
 }
 
 function Main(mainProps:MainProps): JSX.Element {
@@ -35,50 +39,7 @@ function Main(mainProps:MainProps): JSX.Element {
               </ul>
             </form>
             <div className="cities__places-list places__list tabs__content">
-              <PlaceCard
-                isPremium
-                images = "img/apartment-01.jpg"
-                price = {120}
-                isFavorite = {false}
-                title = "Beautiful &amp; luxurious apartment at great location"
-                type = "Apartment"
-              />
-
-              <PlaceCard
-                isPremium={false}
-                images = "img/room.jpg"
-                price = {80}
-                isFavorite
-                title = "Wood and stone place"
-                type = "Room"
-              />
-
-              <PlaceCard
-                isPremium={false}
-                images = "img/apartment-02.jpg"
-                price = {132}
-                isFavorite = {false}
-                title = "Canal View Prinsengracht"
-                type = "Apartment"
-              />
-
-              <PlaceCard
-                isPremium
-                images = "img/apartment-03.jpg"
-                price = {180}
-                isFavorite = {false}
-                title = "Nice, cozy, warm big bed apartment"
-                type = "Apartment"
-              />
-
-              <PlaceCard
-                isPremium={false}
-                images = "img/room.jpg"
-                price = {80}
-                isFavorite
-                title = "Wood and stone place"
-                type = "Room"
-              />
+              {mainProps.place_cards[mainProps.active_city].map((card) => card)}
             </div>
           </section>
           <div className="cities__right-section">

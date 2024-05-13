@@ -20,7 +20,7 @@ export const offers = {
       isFavorite
       rating={4.8}
       features={{entire:'Apartment', bedrooms:'3 Bedrooms', adults:'Max 4 adults'}}
-      price = {120}
+      price = {180}
       inside={[
         InsideObject.WiFi, 
         InsideObject.WashingMachine, 
@@ -60,7 +60,7 @@ export const offers = {
 
     <Offer
       key="amsterdam-2"
-      paths_gallery={['img/apartment-01.jpg', 'img/apartment-02.jpg', 'img/room.jpg', 'img/apartment-03.jpg', 'img/apartment-01.jpg', 'img/studio-01.jpg']}
+      paths_gallery={['img/room-small.jpg', 'img/apartment-02.jpg', 'img/room.jpg', 'img/apartment-03.jpg', 'img/apartment-01.jpg', 'img/studio-01.jpg']}
       isPremium={false}
       name='Wood and stone place'    
       isFavorite
@@ -103,7 +103,7 @@ export const offers = {
 
     <Offer
       key="amsterdam-3"
-      paths_gallery={['img/studio-01.jpg', 'img/apartment-02.jpg', 'img/apartment-01.jpg', 'img/room.jpg', 'img/apartment-03.jpg', 'img/apartment-01.jpg']}
+      paths_gallery={['img/room.jpg', 'img/apartment-02.jpg', 'img/apartment-01.jpg', 'img/room.jpg', 'img/apartment-03.jpg', 'img/apartment-01.jpg']}
       isPremium={false}
       name='Wood and stone place'    
       isFavorite

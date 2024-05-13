@@ -1,4 +1,4 @@
-import PlaceCard from "../../components/place_card";
+import PlaceCard from "../../components/place_card/place_card";
 import ReviewNew from "../../components/review_new";
 
 type OfferProps = {

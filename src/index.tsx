@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
 import { CityName } from './const';
 import { offers } from './pages/offer/offers';
+import { Place_Cards } from './components/place_card/place_cards';
 
 const cities:string[] = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
 
@@ -29,10 +30,11 @@ root.render(
     <App
       count_places={Setting.countPlaces}
       offers={offers}
+      place_cards={Place_Cards}
       cities={cities}
       activeCityId={Setting.activeCityId}
       currentPage={Setting.currentPage}
-      currentCity={Setting.currentCity}
+      active_city={Setting.currentCity}
       isMain={Setting.isMain}
       wasLogin={Setting.wasLogin}
       email={Setting.email}

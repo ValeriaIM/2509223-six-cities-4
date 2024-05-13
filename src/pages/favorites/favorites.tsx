@@ -1,4 +1,4 @@
-import PlaceCard from '../../components/place_card';
+import PlaceCard from '../../components/place_card/place_card';
 import FavoriteLocation from '../../components/favorite_location';
 
 function Favorite(): JSX.Element {
