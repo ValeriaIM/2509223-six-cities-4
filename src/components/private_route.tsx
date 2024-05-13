@@ -1,6 +1,5 @@
 import { Navigate } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../const';
-import { PlaceCards } from './place_card/place_cards';
 
 type PrivateRouteProps = {
     authorizationStatus: AuthorizationStatus;
