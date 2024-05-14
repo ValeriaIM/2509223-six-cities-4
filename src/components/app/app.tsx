@@ -80,13 +80,18 @@ function App(appScreenProps: AppScreenProps): JSX.Element {
   const [isMain, setIsMain] = React.useState(appScreenProps.isMain);
   const [wasLogin, setWasLogin] = React.useState(appScreenProps.wasLogin);
 
+  var favoriteCount = 0;
+  {Object.entries(appScreenProps.favorite_cards).map(([location, placeCards]) => ( placeCards.length > 0 ?
+    favoriteCount += placeCards.length : favoriteCount
+  ))}
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={AppRoute.Root} element={<Layout isMain={isMain} wasLogin={wasLogin} email={appScreenProps.email} favorite={appScreenProps.place_cards[appScreenProps.active_city].length} isNeedingFooter={appScreenProps.isNeedingFooter}/>}>
+        <Route path={AppRoute.Root} element={<Layout isMain={isMain} wasLogin={wasLogin} email={appScreenProps.email} favorite={favoriteCount} isNeedingFooter={appScreenProps.isNeedingFooter}/>}>
           <Route index element={GetMain(appScreenProps)} />
           <Route path={AppRoute.Favorites} element={<PrivateRoute authorizationStatus={AuthorizationStatus.Auth}><Favorite favorite_cards={appScreenProps.favorite_cards}/></PrivateRoute>} />
-          <Route path={AppRoute.Offer} element={<Offers wasLogin={appScreenProps.wasLogin} city={appScreenProps.active_city} index={0}/>} />
+          <Route path={`${AppRoute.Offer}/:cardKey`} element={<Offers />} />
           <Route path={AppRoute.Login} element={<GetLogin appScreenProps={appScreenProps} setIsMain={setIsMain} setWasLogin={setWasLogin}/>} />
           <Route path='*' element={<NotFound/>}/>
         </Route>

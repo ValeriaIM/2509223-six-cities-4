@@ -3,12 +3,8 @@ import Host from '../../components/offer_host';
 import Offer from './offer';
 import { CityName, InsideObject } from '../../const';
 import { Fragment } from 'react';
-
-type OffersProps = { 
-  wasLogin: boolean;
-  city: CityName;
-  index: number;
-};
+import { useParams } from 'react-router-dom';
+import { Place_Cards } from '../../components/place_card/place_cards';
 
 export const offers = {
   [CityName.Amsterdam]: [
@@ -56,6 +52,11 @@ export const offers = {
           time="April 2019"
         />],
       ]}
+      otherCards={[
+        Place_Cards[CityName.Amsterdam][0],
+        Place_Cards[CityName.Amsterdam][1],
+        Place_Cards[CityName.Amsterdam][2],
+      ]}
     />,
 
     <Offer
@@ -99,6 +100,11 @@ export const offers = {
           time="April 2020"
         />],
       ]}
+      otherCards={[
+        Place_Cards[CityName.Amsterdam][0],
+        Place_Cards[CityName.Amsterdam][1],
+        Place_Cards[CityName.Amsterdam][2],
+      ]}
     />,
 
     <Offer
@@ -133,6 +139,11 @@ export const offers = {
         ]}
       />]}
       reviews={[
+      ]}
+      otherCards={[
+        Place_Cards[CityName.Amsterdam][0],
+        Place_Cards[CityName.Amsterdam][1],
+        Place_Cards[CityName.Amsterdam][2],
       ]}
     />,
   ],
@@ -190,6 +201,11 @@ export const offers = {
           time="April 2022"
         />],
       ]}
+      otherCards={[
+        Place_Cards[CityName.Amsterdam][0],
+        Place_Cards[CityName.Amsterdam][1],
+        Place_Cards[CityName.Amsterdam][2],
+      ]}
     />,
   ],
   [CityName.Dusseldorf]: [
@@ -206,8 +222,22 @@ export const offers = {
   ]
 };
 
-function Offers(offerProps:OffersProps): JSX.Element {
-  return <Fragment>{offers[offerProps.city][offerProps.index]}</Fragment>;
+function Offers(): JSX.Element {
+  const { cardKey } = useParams<{ cardKey: string }>();
+  console.log(cardKey)
+  if (cardKey === undefined) {
+    return <Fragment>{offers[CityName.Amsterdam][0]}</Fragment>;
+  }
+
+  const [cityString, indexString] = cardKey.split('_');
+  const city: CityName = CityName[cityString as keyof typeof CityName];
+  const index: number = parseInt(indexString);
+
+  console.log(cityString)
+  console.log(indexString)
+  console.log(city)
+  console.log(index)
+  return <Fragment>{offers[city][index - 1]}</Fragment>;
 }
 
 export default Offers;

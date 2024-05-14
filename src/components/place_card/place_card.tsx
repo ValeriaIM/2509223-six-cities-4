@@ -1,11 +1,17 @@
+import { Link } from "react-router-dom";
+import { AppRoute, CityName } from "../../const";
+
 type PlaceCardProps = {
-    key?: string;
+    key: string;
     isPremium: boolean;
     images: string;
     price: number;
     isFavorite: boolean;
     title: string;
     type: string;
+
+    city: CityName;
+    index: number;
 }
 
 function PlaceCard(placeCardProps: PlaceCardProps): JSX.Element {
@@ -43,9 +49,9 @@ function PlaceCard(placeCardProps: PlaceCardProps): JSX.Element {
     <article className="cities__card place-card">
       {mark}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="#">
+        <Link to={AppRoute.Offer + '/' + placeCardProps.city + '_' + placeCardProps.index}>
           <img className="place-card__image" src={placeCardProps.images} width="260" height="200" alt="Place image" />
-        </a>
+        </Link>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">

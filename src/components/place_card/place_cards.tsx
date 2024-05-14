@@ -13,6 +13,8 @@ export const Place_Cards: PlaceCards = {
         isFavorite
         title = "Nice, cozy, warm big bed apartment"
         type = "Apartment"
+        city={CityName.Amsterdam}
+        index={1}
       />,
 
       <PlaceCard
@@ -23,6 +25,8 @@ export const Place_Cards: PlaceCards = {
         isFavorite
         title = "Wood and stone place"
         type = "Room"
+        city={CityName.Amsterdam}
+        index={2}
       />,
 
       <PlaceCard
@@ -33,6 +37,8 @@ export const Place_Cards: PlaceCards = {
         isFavorite
         title = "Wood and stone place"
         type = "Room"
+        city={CityName.Amsterdam}
+        index={3}
       />,
 
       <PlaceCard
@@ -43,6 +49,8 @@ export const Place_Cards: PlaceCards = {
         isFavorite = {false}
         title = "Canal View Prinsengracht"
         type = "Apartment"
+        city={CityName.Amsterdam}
+        index={4}
       />,
 
       <PlaceCard
@@ -53,6 +61,8 @@ export const Place_Cards: PlaceCards = {
         isFavorite = {false}
         title = "Nice, cozy, warm big bed apartment"
         type = "Apartment"
+        city={CityName.Amsterdam}
+        index={5}
       />,
     ],
     [CityName.Cologne]: [
@@ -64,6 +74,8 @@ export const Place_Cards: PlaceCards = {
         isFavorite
         title = "White castle"
         type = "Apartment"
+        city={CityName.Cologne}
+        index={1}
       />,
     ],
     [CityName.Dusseldorf]: [

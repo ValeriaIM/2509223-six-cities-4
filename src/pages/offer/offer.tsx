@@ -13,6 +13,7 @@ type OfferProps = {
     inside: string[];
     host: JSX.Element[];
     reviews: JSX.Element[][];
+    otherCards: JSX.Element[];
 }
 
 type Features = {
@@ -145,30 +146,7 @@ function Offer(offerProps:OfferProps): JSX.Element {
               Other places in the neighbourhood
             </h2>
             <div className="near-places__list places__list">
-              <PlaceCard
-                isPremium = {false}
-                images='img/room.jpg'
-                price={80}
-                isFavorite
-                title = "Wood and stone place"
-                type = "Room"
-              />
-              <PlaceCard
-                isPremium= {false}
-                images='img/apartment-02.jpg'
-                price = {132}
-                isFavorite = {false}
-                title = "Canal View Prinsengracht"
-                type = "Apartment"
-              />
-              <PlaceCard
-                isPremium
-                images = 'img/apartment-03.jpg'
-                price = {180}
-                isFavorite = {false}
-                title = "Nice, cozy, warm big bed apartment"
-                type = "Apartment"
-              />
+              {offerProps.otherCards.map((otherCard: JSX.Element) => otherCard)}
             </div>
           </section>
         </div>
