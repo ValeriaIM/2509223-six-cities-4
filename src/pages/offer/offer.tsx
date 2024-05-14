@@ -1,8 +1,11 @@
 import PlaceCard from "../../components/place_card/place_card";
 import ReviewNew from "../../components/review_new";
+import { CityName } from "../../const";
 
-type OfferProps = {
+export type OfferProps = {
     key?: string;
+    city: CityName;
+    index: number;
     paths_gallery: string[];
     isPremium: boolean;
     name: string;    
@@ -134,7 +137,7 @@ function Offer(offerProps:OfferProps): JSX.Element {
                 <ul className="reviews__list">
                   {offerProps.reviews.map((review) => <li className="reviews__item">{review}</li>)}
                 </ul>
-                <ReviewNew />
+                <ReviewNew offerProps={offerProps}/>
               </section>
             </div>
           </div>

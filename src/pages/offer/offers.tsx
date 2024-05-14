@@ -10,6 +10,8 @@ export const offers = {
   [CityName.Amsterdam]: [
     <Offer
       key="amsterdam-1"
+      city={CityName.Amsterdam}
+      index={1}
       paths_gallery={['img/room.jpg', 'img/apartment-01.jpg', 'img/apartment-02.jpg', 'img/apartment-03.jpg', 'img/studio-01.jpg', 'img/apartment-01.jpg']}
       isPremium
       name='Beautiful &amp; luxurious studio at great location'    
@@ -50,6 +52,7 @@ export const offers = {
           by the unique lightness of Amsterdam. The building is
           green and from 18th century."
           time="April 2019"
+          rating={5}
         />],
       ]}
       otherCards={[
@@ -61,6 +64,8 @@ export const offers = {
 
     <Offer
       key="amsterdam-2"
+      city={CityName.Amsterdam}
+      index={2}
       paths_gallery={['img/room-small.jpg', 'img/apartment-02.jpg', 'img/room.jpg', 'img/apartment-03.jpg', 'img/apartment-01.jpg', 'img/studio-01.jpg']}
       isPremium={false}
       name='Wood and stone place'    
@@ -98,6 +103,7 @@ export const offers = {
           by the unique lightness of Amsterdam. The building is
           green and from 18th century."
           time="April 2020"
+          rating={5}
         />],
       ]}
       otherCards={[
@@ -109,6 +115,8 @@ export const offers = {
 
     <Offer
       key="amsterdam-3"
+      city={CityName.Amsterdam}
+      index={3}
       paths_gallery={['img/room.jpg', 'img/apartment-02.jpg', 'img/apartment-01.jpg', 'img/room.jpg', 'img/apartment-03.jpg', 'img/apartment-01.jpg']}
       isPremium={false}
       name='Wood and stone place'    
@@ -150,6 +158,8 @@ export const offers = {
   [CityName.Cologne]: [
     <Offer
       key="cologne-1"
+      city={CityName.Cologne}
+      index={1}
       paths_gallery={['img/apartment-02.jpg', 'img/room.jpg', 'img/apartment-03.jpg', 'img/apartment-01.jpg', 'img/studio-01.jpg', 'img/apartment-01.jpg']}
       isPremium
       name='White castle'    
@@ -189,6 +199,7 @@ export const offers = {
           by the unique lightness of Amsterdam. The building is
           green and from 18th century."
           time="April 2020"
+          rating={5}
         />],
         [<Review
           user={{
@@ -199,6 +210,7 @@ export const offers = {
           by the unique lightness of Amsterdam. The building is
           green and from 18th century."
           time="April 2022"
+          rating={5}
         />],
       ]}
       otherCards={[
@@ -233,10 +245,7 @@ function Offers(): JSX.Element {
   const city: CityName = CityName[cityString as keyof typeof CityName];
   const index: number = parseInt(indexString);
 
-  console.log(cityString)
-  console.log(indexString)
-  console.log(city)
-  console.log(index)
+  
   return <Fragment>{offers[city][index - 1]}</Fragment>;
 }
 

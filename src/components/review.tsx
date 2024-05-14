@@ -8,6 +8,7 @@ type ReviewProps = {
 
     textComment: string;
     time: string;
+    rating: number;
 }
 
 function Review(reviewProps:ReviewProps): JSX.Element{
